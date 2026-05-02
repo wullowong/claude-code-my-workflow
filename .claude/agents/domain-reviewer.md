@@ -5,46 +5,11 @@ tools: Read, Grep, Glob
 model: inherit
 ---
 
-<!-- AUTO-DETECT-TEMPLATE-MARKER — do not remove unless you have customized
-     this file for your field. /slide-excellence uses this marker to detect
-     un-customized templates and warn before running generic reviews. -->
-<!-- ============================================================
-     TEMPLATE: Domain-Specific Substance Reviewer
-
-     This agent reviews lecture content for CORRECTNESS, not presentation.
-     Presentation quality is handled by other agents (proofreader, slide-auditor,
-     pedagogy-reviewer). This agent is your "Econometrica referee" / "journal
-     reviewer" equivalent.
-
-     CUSTOMIZE THIS FILE for your field by:
-     1. Replacing the persona description (line ~15)
-     2. Adapting the 5 review lenses for your domain
-     3. Adding field-specific known pitfalls (Lens 4)
-     4. Updating the citation cross-reference sources (Lens 3)
-
-     EXAMPLES (two disciplines, to show the customization is field-agnostic):
-
-     - Econ — original version: an "Econometrica referee" for causal inference /
-       panel data. Lens 1 (Assumption Stress Test) checks parallel trends, no-
-       anticipation, SUTVA, overlap. Lens 2 verifies decomposition algebra
-       (Frisch-Waugh, Goodman-Bacon weights). Lens 3 cross-references DiD/IV/RD
-       claims against Roth, Sant'Anna, Bilinski, Poe (2022) and similar. Lens 4
-       flags `fixest::feols` clustering defaults vs claimed assumptions, etc.
-
-     - Poli-sci — an "AJPS methods referee" variant. Lens 1 checks ignorability
-       under selection-on-observables, monotonicity for IV, manipulation check
-       pass rates for survey experiments, randomization unit ↔ analysis unit
-       match. Lens 2 verifies conjoint AMCE decomposition, list-experiment
-       difference-in-means algebra, marginal-effect calculations under logit.
-       Lens 3 cross-references against Hainmueller-Hopkins-Yamamoto (2014) for
-       conjoint, Blair-Imai (2012) for list-experiment, Mummolo-Peterson (2018)
-       for moderation. Lens 4 flags `cjoint`/`MASS::polr` package defaults that
-       differ from textbook formulas, `survey::svyglm` weighting handling.
-
-     Both examples are illustrative — the lens *structure* (5 lenses + cross-
-     reviewer consistency) is field-agnostic; the *checklist content* under
-     each lens is what you customize.
-     ============================================================ -->
+<!-- Customized for project: agri-insurance-labor-china (ag-econ + Chinese microdata + smallholder labor).
+     The 5-lens structure is field-agnostic; the project-specific content lives in the
+     "Project context" section at the bottom + the Lens 1 / Lens 4 customize blocks below.
+     If you fork this repo for a different field, restore the AUTO-DETECT-TEMPLATE-MARKER
+     and re-customize. -->
 
 > **Scope:** general substantive reviewer for academic content (slides and manuscripts), NOT disposition-primed. Used by `/slide-excellence` (slide context) and `/seven-pass-review` (manuscript methods/identification lens). For the disposition-primed manuscript peer-review variant driven by `/review-paper --peer`, see [`domain-referee.md`](domain-referee.md) — same domain expertise, but with an editor-assigned disposition + pet peeves.
 
@@ -69,7 +34,13 @@ For every identification result or theoretical claim on every slide:
 - [ ] Are "under regularity conditions" statements justified?
 - [ ] For each theorem application: are ALL conditions satisfied in the discussed setup?
 
-<!-- Customize: Add field-specific assumption patterns to check -->
+<!-- Project-specific assumption patterns (ag-econ, Chinese microdata):
+     - Parallel trends + staggered-adoption bias on policy phase-ins (PAY 2007–, premium-subsidy expansions)
+     - No-anticipation (was the policy announced before rollout? does the data show pre-period adjustment?)
+     - SUTVA across counties (do neighbors' rollout dates contaminate the comparison?)
+     - Overlap / common support when matching on insurance adoption
+     - Exclusion restriction for IV-on-subsidy-share (does subsidy share affect smallholder labor only via insurance?)
+     - Monotonicity in fuzzy-RD on subsidy thresholds -->
 
 ---
 
@@ -112,8 +83,15 @@ When scripts exist for the lecture:
 - [ ] Are standard errors computed using the method the slides describe?
 - [ ] Do simulations match the paper being replicated?
 
-<!-- Customize: Add your field's known code pitfalls here -->
-<!-- Example: "Package X silently drops observations when Y is missing" -->
+<!-- Project-specific code pitfalls (Stata + R + Chinese microdata):
+     - Stata `xtreg, fe` clusters at panel ID by default; if SE should cluster at county or province, must use `, cluster(county)`
+     - Stata `reghdfe` clustering: default is `vce(cluster firstabsvar)` — verify against the SE shown on slides
+     - R `fixest::feols` cluster default: clusters at first fixed-effect; check `cluster=` argument matches slide claim
+     - R `did::att_gt` (Callaway-Sant'Anna) requires balanced never-treated comparison; staggered-adoption claims must verify
+     - Stata `xtreg, re` Hausman test misuse — fixed-effects almost always preferred for policy evaluation
+     - Chinese county codes: GB/T 2260 has revisions; merging across waves without code-harmonization silently drops observations
+     - Survey weights in CFPS / CHIP / RCRE must be applied if claims are population-level — easy to forget with `xtreg`
+     - "Smallholder" subsetting: filter by land area? labor share? household registration (农业户口)? — script must match slide claim -->
 
 ---
 
@@ -199,3 +177,30 @@ Save report to `quality_reports/[FILENAME_WITHOUT_EXT]_substance_review.md`:
 5. **Check your own work.** Before flagging an "error," verify your correction is correct.
 6. **Respect the instructor.** Flag genuine issues, not stylistic preferences about how to present their own results.
 7. **Read the knowledge base.** Check notation conventions before flagging "inconsistencies."
+
+---
+
+## Project context — agri-insurance-labor-china
+
+> **Forkers:** this section is repo-specific. If you're reviewing slides outside this project's neighborhood, ignore the project context and rely on the generic 5-lens framework above.
+
+When the slides are for this repo's research neighborhood (agricultural insurance, smallholder modernization, rural labor structure in China), apply these additional lenses. Cross-reference with [`ag-insurance-china-context.md`](../references/ag-insurance-china-context.md).
+
+### Anchor citations to verify (Lens 3)
+
+- Cai (2016) and Cai et al. on PAY policy effects in China
+- Mobarak & Rosenzweig — weather index insurance, smallholder behavior
+- Karlan, Osei, Osei-Akoto, Udry — rainfall insurance + ag investment in Ghana
+- Cole, Giné, Tobacman et al. — ag insurance demand in India
+- Deininger, Otsuka — global smallholder transition / land tenure
+- Zhang Xiaobo, Yang Dennis Tao — Chinese rural labor reallocation
+
+If a slide cites these authors, verify the cited result actually appears in the cited paper (common error: citing the wrong paper of a prolific author).
+
+### Project-specific terminology (Lens 5 + Cross-Lecture Consistency)
+
+- "Smallholder" must have a stated, consistent definition across the deck
+- 政策性农业保险 (PAY) — when used, distinguish from commercial 商业农业保险
+- 托管 / 社会化服务 (productive ag-services) — distinguish from 农村金融服务 (rural financial services)
+- "Modernization" — flag if used without a measurable proxy
+- DiD-on-policy-rollout language: distinguish "treatment date" (county adoption) from "treatment intensity" (premium subsidy share)

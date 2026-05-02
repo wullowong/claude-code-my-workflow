@@ -40,6 +40,7 @@ Thumbs.db
 .claude/settings.local.json
 .claude/state/
 CLAUDE.local.md
+MEMORY.template-archive.md
 
 # IDE
 # .vscode/settings.json ships in the template (carries shipped Claude Code permission-mode
@@ -75,6 +76,20 @@ quality_reports/preregistrations/*
 
 # R analysis outputs (generated artifacts; keep scripts, ignore outputs)
 scripts/R/_outputs/
+scripts/Stata/_outputs/
+scripts/Python/_outputs/
+
+# Microdata — never commit raw or processed data; structure ships via .gitkeep
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/raw/README.md
+!data/processed/.gitkeep
+!data/processed/README.md
+
+# Manuscript artifacts (compiled outputs); keep .tex/.docx sources, ignore renders
+manuscript/*.pdf
+manuscript/*.docx.bak
 
 # Output artifacts — uncomment lines below based on your preference
 # *.rds

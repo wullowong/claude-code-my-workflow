@@ -5,9 +5,11 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at docs/workflow-guide.html for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** Agricultural Insurance and Smallholder Labor Upgrading in China
+**Institution:** [INSTITUTION — please fill in]
 **Branch:** main
+
+> **Project type — empirical research paper.** Chinese microdata → Stata + R + Python scripts → regression tables → drafts in LaTeX (primary) and Word, plus a conference slide deck. Not a lecture course. The slides infrastructure stays available but is secondary; data analysis and the manuscript are the main objects.
 
 ---
 
@@ -15,7 +17,7 @@
 
 - **Plan first** -- enter plan mode before non-trivial tasks; save plans to `quality_reports/plans/`
 - **Verify after** -- compile/render and confirm output at the end of every task
-- **Single source of truth** -- Beamer `.tex` is authoritative; Quarto `.qmd` derives from it
+- **Single source of truth** -- LaTeX manuscript is the authoritative draft; Word version + conference slides derive from it
 - **Quality gates** -- nothing ships below 80/100
 - **[LEARN] tags** -- when corrected, save `[LEARN:category] wrong → right` to [MEMORY.md](MEMORY.md)
 
@@ -26,20 +28,27 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ## Folder Structure
 
 ```
-[YOUR-PROJECT]/
+agri-insurance-labor-china/
 ├── CLAUDE.MD                    # This file
-├── .claude/                     # Rules, skills, agents, hooks
-├── Bibliography_base.bib        # Centralized bibliography
-├── Figures/                     # Figures and images
-├── Preambles/header.tex         # LaTeX headers
-├── Slides/                      # Beamer .tex files
-├── Quarto/                      # RevealJS .qmd files + theme
-├── docs/                        # GitHub Pages (auto-generated)
-├── scripts/                     # Utility scripts + R code
-├── quality_reports/             # Plans, session logs, merge reports, decision records
-├── explorations/                # Research sandbox (see rules)
-├── templates/                   # Session log, quality report templates
-└── master_supporting_docs/      # Papers and existing slides
+├── MEMORY.md                    # Cross-session [LEARN] entries
+├── .claude/                     # Rules, skills, agents, hooks, references
+├── data/
+│   ├── raw/                     # Original Chinese microdata (gitignored)
+│   └── processed/               # Analysis-ready datasets (gitignored)
+├── scripts/
+│   ├── Stata/                   # Stata .do files (numbered: 01_clean.do …)
+│   ├── R/                       # R scripts; outputs land in scripts/R/_outputs/
+│   └── Python/                  # Python scripts (auxiliary)
+├── manuscript/                  # LaTeX paper + Word draft + final tables/figures
+├── Bibliography_base.bib        # Centralized bibliography (BibTeX)
+├── Figures/                     # Figures for paper and slides
+├── quality_reports/             # Plans, specs, session logs, decisions
+├── explorations/                # Research sandbox
+├── templates/                   # Session log, requirements spec templates
+└── master_supporting_docs/      # Reference papers and prior slides
+
+# Conference slide deck (secondary; activated when a venue is selected)
+├── Slides/    Quarto/    Preambles/header.tex    docs/
 ```
 
 ---
@@ -47,23 +56,25 @@ Cross-session context lives in [MEMORY.md](MEMORY.md); past plans, specs, and se
 ## Commands
 
 ```bash
-# LaTeX (3-pass, XeLaTeX only)
-cd Slides && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-BIBINPUTS=..:$BIBINPUTS bibtex file
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
-TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode file.tex
+# --- Data analysis (primary) ---
+stata -b do scripts/Stata/01_clean.do          # Stata
+Rscript scripts/R/01_clean.R                    # R (outputs → scripts/R/_outputs/)
+python scripts/Python/01_clean.py               # Python
 
-# Deploy Quarto to GitHub Pages
+# --- LaTeX manuscript (3-pass XeLaTeX + bibtex) ---
+cd manuscript && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode paper.tex
+BIBINPUTS=..:$BIBINPUTS bibtex paper
+TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode paper.tex
+TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode paper.tex
+
+# --- Conference slides (secondary) ---
+# Same Beamer compile from Slides/. Quarto deploy:
 ./scripts/sync_to_docs.sh LectureN
 
-# Quality score
-python scripts/quality_score.py Quarto/file.qmd
-
-# Palette sync (LaTeX ↔ SCSS)
-./scripts/check-palette-sync.sh
-
-# Surface-count sync (README ↔ CLAUDE.md ↔ guide ↔ landing page)
-./scripts/check-surface-sync.sh
+# --- Quality / consistency utilities ---
+python scripts/quality_score.py Quarto/file.qmd     # Quality score (slides)
+./scripts/check-palette-sync.sh                     # LaTeX ↔ SCSS color parity
+./scripts/check-surface-sync.sh                     # Doc surface counts in sync
 ```
 
 **Palette contract:** color names in `Preambles/header.tex` must match SCSS variables in `Quarto/theme-template.scss`. See [`Preambles/README.md`](Preambles/README.md).
@@ -119,30 +130,30 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 
 ---
 
-<!-- CUSTOMIZE: Replace placeholder rows ([your-env], [.your-class]) with your own.
-     Delete the rows marked "(example — delete)" once you've added yours. -->
+<!-- CUSTOMIZE: Add Beamer environments / Quarto CSS classes when you start the conference deck. -->
 
 ## Beamer Custom Environments
 
 | Environment | Effect | Use Case |
 | --- | --- | --- |
-| `[your-env]` | [Description] | [When to use] |
-| `keybox` | Gold background box | Key points *(example — delete)* |
-| `definitionbox[Title]` | Blue-bordered titled box | Formal definitions *(example — delete)* |
+| _(none yet — populate when conference deck is started)_ | | |
 
 ## Quarto CSS Classes
 
 | Class | Effect | Use Case |
 | --- | --- | --- |
-| `[.your-class]` | [Description] | [When to use] |
-| `.smaller` | 85% font | Dense content *(example — delete)* |
-| `.positive` | Green bold | Good annotations *(example — delete)* |
+| _(none yet — populate when conference deck is started)_ | | |
 
 ---
 
 ## Current Project State
 
-| Lecture | Beamer | Quarto | Key Content |
-| --- | --- | --- | --- |
-| HelloWorld *(sample — delete when ready)* | `HelloWorld.tex` | `HelloWorld.qmd` | Minimal deck to verify setup |
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
+| Artifact | Path | Status |
+| --- | --- | --- |
+| Manuscript (LaTeX) | `manuscript/paper.tex` | Not started |
+| Manuscript (Word) | `manuscript/paper.docx` | Not started |
+| Conference deck | `Slides/`, `Quarto/` | HelloWorld demo only |
+| Stata pipeline | `scripts/Stata/` | Empty scaffold |
+| R pipeline | `scripts/R/` | Empty scaffold |
+| Python utilities | `scripts/Python/` | Empty scaffold |
+| Bibliography | `Bibliography_base.bib` | Seed entries (anchor papers) |
