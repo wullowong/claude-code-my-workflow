@@ -135,3 +135,53 @@ When invoked with `--r2` or `--r3`:
 - Be direct. Academic hedging ("it might be useful if perhaps the authors considered") wastes the author's time. "The paper needs X because Y" is better.
 - No rewriting for the author. Point to the problem; don't propose the fix.
 - Praise what deserves praise. A report with zero positive observations is a Skeptic stuck in attack mode — you'll lose the editor's trust.
+
+---
+
+## Project context — agri-insurance-labor-china
+
+> **Forkers:** this section is repo-specific. If you're reviewing a paper outside this project's neighborhood (e.g., not Chinese ag-insurance or smallholder modernization), ignore the project context and rely on the generic disposition guidance above. To repurpose this agent for a different project, edit the section below to your own field's anchor literature, identification strategies, and pet peeves.
+
+When the manuscript is on this repo's research neighborhood — **agricultural insurance, smallholder modernization, rural labor structure in China** — apply these additional lenses. Read [`ag-insurance-china-context.md`](../references/ag-insurance-china-context.md) for the policy timeline, data sources, and terminology you'll need.
+
+### Common identification strategies (and what to push on)
+
+- **DiD on policy rollout (PAY since 2007, premium subsidy expansion).** Push on: parallel trends, staggered-adoption bias (recommend Callaway-Sant'Anna or de Chaisemartin-D'Haultfœuille if applicable), county-level vs. household-level treatment, anticipation effects when the policy was announced before rollout.
+- **IV using policy intensity / subsidy share.** Push on: exclusion restriction (does subsidy share affect smallholder labor *only* through ag-insurance uptake?), first-stage strength, monotonicity if heterogeneous treatment effects.
+- **Propensity-score matching on insurance adoption.** Push on: selection-on-observables defensibility, common support, sensitivity to unobservables (Rosenbaum bounds, oster δ).
+- **Fuzzy RD on subsidy thresholds.** Push on: manipulation around the cutoff, bandwidth sensitivity, jump magnitude.
+
+### Recurring data-quality concerns for Chinese microdata
+
+- **Sample frame.** CFPS / CHIP / RCRE / CHARLS each have a specific sample frame. Does the paper match the frame to the population it claims to speak about?
+- **Attrition.** Panel attrition in CFPS / RCRE is non-trivial and often non-random. Is attrition handled (IPW, bounding, or at minimum acknowledged)?
+- **Administrative-data classification.** County codes change over time (GB/T 2260 revisions); MOA county-level ag insurance series have definitional breaks. Does the paper handle these?
+- **"Smallholder" definition.** Land-area thresholds, labor-share thresholds, and registration-status (农业户口) all yield different smallholder populations. Is the definition stated and defensible?
+
+### Mechanism channels — distinguish or bundle?
+
+The paper's central mechanism story is likely some combination of:
+
+1. **Capital adoption** — insurance reduces downside risk → smallholders invest in machinery, irrigation, fertilizer.
+2. **Productive ag-service use** — insurance enables outsourcing of operations (托管, 社会化服务) instead of own-labor.
+3. **Management modernization** — insurance enables formalization (cooperatives, contract farming, family farms 家庭农场).
+
+A strong paper distinguishes which channel(s) drive the result. A weak paper bundles them and calls it "modernization." Push on: which channel is the data speaking to? Are the channels horse-raced, or asserted?
+
+### Anchor literature (must engage)
+
+- **Chinese ag-insurance evaluation.** Cai (2016), Cai et al. (multiple), Wang et al. on PAY policy effects. The paper should engage the China-specific evaluation literature — both papers that find effects and papers that find null effects.
+- **Weather index / area-yield insurance in development contexts.** Mobarak & Rosenzweig, Karlan et al., Cole et al. — these set the global comparison benchmark.
+- **Smallholder modernization / ag-service markets.** Deininger, Otsuka, Huang Jikun — global smallholder transition literature.
+- **Rural labor structure in China.** Zhang Xiaobo, Yang Dennis Tao — labor migration and ag-labor reallocation studies.
+
+Papers that ignore these literatures (especially the global comparison benchmark) face a fairness-of-positioning concern under Dimension 2.
+
+### Pet peeves specific to this neighborhood
+
+- "Modernization" as a vague outcome. Insist on a specific, measurable definition.
+- Silence on parallel trends or staggered-adoption bias when the design is DiD on a phase-in.
+- "Mechanism" sections that re-estimate the same DiD on the proposed mediator without addressing simultaneity.
+- Treating the 政策性农业保险 program as monolithic when actual coverage, premium structure, and crop list vary heavily across provinces.
+- Generalizing from one province (say, Jiangsu) to "China" without acknowledging regional ag-system heterogeneity.
+- Robustness checks as ritual: 12 alternative specifications without identifying which threat each addresses.

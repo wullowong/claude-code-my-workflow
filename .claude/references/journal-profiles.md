@@ -310,6 +310,291 @@ Three flagship general-interest political-science journals. The `paper_type` tax
 
 ---
 
+## Agricultural and Development Economics
+
+Profiles for journals likely to receive papers on ag insurance, smallholder modernization, rural labor, food/farm policy, and Chinese development microeconomics. The `paper_type` taxonomy here typically resolves to `reduced-form` (DiD, IV, matching on policy rollouts) or `descriptive` (sample documentation, treatment-effect heterogeneity).
+
+### American Journal of Agricultural Economics (AJAE)
+
+**Short name:** `AJAE`
+
+**Focus.** AAEA flagship; the top general-interest ag-econ journal. Publishes empirical and theoretical work on ag/food markets, farm and food policy, environmental and resource economics with an ag connection, ag-development, and rural microeconomics. Receptive to Chinese microdata when the contribution generalizes beyond the specific setting.
+
+**Bar.** Credible identification + substantive contribution to ag-econ. The methodological bar is close to top-field-econ for empirical work; the substantive bar requires the paper to teach something an ag-economist who doesn't work on this topic would want to know. AJAE Replication Policy is enforced (since 2018) — replication archive mandatory at acceptance.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 30 (unchanged)
+- Substance 20 → 25 (must speak to ag-econ literature, not just to a Chinese-data audience)
+- External validity 15 → 20 (does the China result tell us something about smallholder behavior more generally?)
+
+**Methods-referee adjustments.**
+- Identification 35 → 40 (top-field-style identification expected)
+- Replication 5 → 10 (AJAE Replication Policy)
+
+**Typical concerns.**
+- "Does the paper engage the global ag-insurance / smallholder modernization literature, or only the China-specific literature?"
+- "Is the policy variation plausibly exogenous, or are county-level rollouts confounded with unobserved trends?"
+- "Are the parallel-trends / first-stage diagnostics persuasive?"
+- "Are mechanism channels distinguished (capital adoption vs. service use vs. management modernization), or bundled?"
+- "Is the replication archive complete and runs out of the box?"
+
+**Referee-pool weights.**
+- CREDIBILITY: 0.30
+- POLICY: 0.20
+- MEASUREMENT: 0.20
+- STRUCTURAL: 0.10
+- SKEPTIC: 0.15
+- THEORY: 0.05
+
+**Table format override.** Significance stars allowed (0.10/0.05/0.01); SE in parentheses; clustering specification stated in notes.
+
+---
+
+### China Economic Review (CER)
+
+**Short name:** `CER`
+
+**Focus.** General-interest economics journal focused on the Chinese economy. Publishes across all subfields when the substantive contribution is China-specific. Receptive to careful empirical work using Chinese microdata, administrative data, or natural experiments unique to China's policy environment.
+
+**Bar.** A clear China contribution. The reviewer asks "what does this paper teach us about the Chinese economy that we didn't already know?" — not "what does this paper teach us about economics in general." Methodological rigor expected but the methods novelty bar is lower than top-field-econ.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 30 (unchanged)
+- Lit positioning 25 → 25 (must engage both the Chinese-economy literature and the relevant international literature)
+- External validity 15 → 10 (China-specific contributions are accepted; generalizability is not the binding constraint)
+
+**Methods-referee adjustments.**
+- Identification 35 → 35 (unchanged)
+- Data validation 20 → 25 (Chinese microdata quality is a recurring concern: sampling, attrition, administrative classification)
+
+**Typical concerns.**
+- "What is the China-specific contribution? Could the paper be written about any country?"
+- "Are the data sources appropriate for the question? (Sample frame, coverage, attrition.)"
+- "Is the policy timeline accurately characterized? (e.g., national policy vs. county-level rollout.)"
+- "Does the paper engage the Chinese-language literature where it is the natural reference?"
+
+**Referee-pool weights.**
+- CREDIBILITY: 0.25
+- MEASUREMENT: 0.25
+- POLICY: 0.20
+- SKEPTIC: 0.15
+- STRUCTURAL: 0.10
+- THEORY: 0.05
+
+**Table format override.** Standard; significance stars allowed.
+
+---
+
+### Food Policy (FP)
+
+**Short name:** `FoodPolicy`
+
+**Focus.** Policy-oriented food, ag, and nutrition research. Broader policy reach than AJAE; narrower disciplinary core. Receptive to empirical economics, but values policy translation as much as econometric novelty. Multidisciplinary readership (economists, nutritionists, ag scientists, policy analysts).
+
+**Bar.** "What does this mean for policy?" must be answerable in one paragraph. Pure econometric exercises without policy relevance face desk-reject pressure.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 30 (unchanged)
+- Substance 20 → 30 (policy-translation weight)
+- External validity 15 → 20 (does this lesson travel to other low/middle-income contexts?)
+
+**Methods-referee adjustments.**
+- Identification 35 → 30 (cared about, but not QJE-level)
+- Robustness 15 → 15 (unchanged)
+
+**Typical concerns.**
+- "What is the policy lesson, in plain language?"
+- "Does the paper translate the empirical result for a policy audience, or assume econometric vocabulary?"
+- "Is the policy proposal grounded in the empirical estimate, or aspirational?"
+- "Does the paper engage the FAO / IFPRI / national-policy literature?"
+
+**Referee-pool weights.**
+- POLICY: 0.40
+- CREDIBILITY: 0.20
+- MEASUREMENT: 0.15
+- SKEPTIC: 0.15
+- STRUCTURAL: 0.05
+- THEORY: 0.05
+
+**Table format override.** Standard; significance stars allowed.
+
+---
+
+### World Development (WD)
+
+**Short name:** `WD`
+
+**Focus.** Flagship multidisciplinary development journal. Publishes across economics, political science, sociology, geography, anthropology when the contribution is to development understanding. Heavy weight on Global South contexts; mixed methods welcome.
+
+**Bar.** Substantive contribution to development knowledge. Methodological rigor expected but methods-only papers do not clear desk; the development-substance must be load-bearing.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 30 (unchanged)
+- Substance 20 → 25 (development-knowledge contribution)
+- External validity 15 → 20 (lessons must travel beyond the specific country setting)
+
+**Methods-referee adjustments.**
+- Identification 35 → 30 (cared about, but design-based identification not always available in development settings; well-argued observational work accepted)
+- Inference 20 → 20 (unchanged)
+
+**Typical concerns.**
+- "What does this paper contribute to our understanding of development, broadly?"
+- "Is the policy / institutional context explained well enough for a non-China reader?"
+- "Are the limitations of the data and design honestly stated?"
+- "Does the paper engage the comparative-development literature, or only the China-specific literature?"
+
+**Referee-pool weights.**
+- POLICY: 0.30
+- CREDIBILITY: 0.20
+- MEASUREMENT: 0.15
+- SKEPTIC: 0.15
+- STRUCTURAL: 0.10
+- THEORY: 0.10
+
+**Table format override.** Standard; significance stars allowed.
+
+---
+
+### China Agricultural Economic Review (CAER)
+
+**Short name:** `CAER`
+
+**Focus.** China-focused ag-econ journal published by Emerald in English; sister venue to the Chinese-language *中国农村经济*. Strong readership inside China + East Asia, growing international readership. Receptive to ag-policy evaluation, rural household behavior, ag-tech adoption, food security, and ag-institutional analysis with Chinese microdata.
+
+**Bar.** Substantive China-ag contribution. Methodological bar is below AJAE / CER but above pure descriptive work. Welcomes detailed institutional and policy context that an international journal might compress.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 25 (lower bar than AJAE)
+- Substance 20 → 30 (China-ag substance is the main attractor)
+- Fit 10 → 10 (unchanged)
+
+**Methods-referee adjustments.**
+- Identification 35 → 30 (still cared about; observational work with thoughtful sensitivity analysis accepted)
+- Data validation 20 → 25 (Chinese microdata sources matter to readers)
+
+**Typical concerns.**
+- "Does the paper accurately characterize the Chinese ag-policy environment, including provincial / county heterogeneity?"
+- "Is the sample representative for the population the paper claims to speak about?"
+- "Does the paper engage the Chinese-language literature?"
+- "Is the policy proposal compatible with the actual administrative setup?"
+
+**Referee-pool weights.**
+- POLICY: 0.30
+- MEASUREMENT: 0.25
+- CREDIBILITY: 0.20
+- SKEPTIC: 0.10
+- STRUCTURAL: 0.10
+- THEORY: 0.05
+
+**Table format override.** Standard; significance stars allowed; bilingual table titles welcomed for key tables.
+
+---
+
+### Applied Economic Perspectives and Policy (AEPP)
+
+**Short name:** `AEPP`
+
+**Focus.** AAEA's policy/perspectives journal, sister to AJAE. Publishes shorter, policy-translation-heavy applied work and synthesis pieces. The "perspectives" framing matters: papers should help non-specialists understand a policy issue, not only contribute marginal econometric estimates.
+
+**Bar.** Clear policy contribution + crisp writing. Methodological novelty is not required; clarity-of-policy-translation is the binding constraint. Targeted at extension agents, USDA staff, ag-policy practitioners, and ag-economists who want a synthesis.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 25 (lower bar than AJAE)
+- Substance 20 → 35 (policy-translation weight is dominant)
+- External validity 15 → 20 (lesson should travel)
+
+**Methods-referee adjustments.**
+- Identification 35 → 25 (cared about, but not central; well-executed reduced-form OK)
+- Robustness 15 → 10 (less obsessed than AJAE)
+
+**Typical concerns.**
+- "What is the practical takeaway? Could a USDA / MoARA staffer act on it?"
+- "Is the writing accessible to a non-econometrician?"
+- "Are the policy implications grounded in the estimate, not extrapolated?"
+- "Does the paper synthesize the existing evidence, or just report a new estimate in isolation?"
+
+**Referee-pool weights.**
+- POLICY: 0.45
+- CREDIBILITY: 0.15
+- MEASUREMENT: 0.15
+- SKEPTIC: 0.15
+- STRUCTURAL: 0.05
+- THEORY: 0.05
+
+**Table format override.** Significance stars allowed; AEPP encourages plain-language summary boxes alongside regression tables.
+
+---
+
+### Journal of Development Studies (JDS)
+
+**Short name:** `JDS`
+
+**Focus.** UK-based multidisciplinary development journal. Publishes economics, political science, sociology, anthropology when the contribution is to development knowledge. Slightly more receptive to qualitative + mixed-methods than World Development; receptive to longer historical / institutional context.
+
+**Bar.** Substantive contribution to development understanding + careful argumentation. Methodological rigor expected for empirical papers but methods novelty is not central.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 30 (unchanged)
+- Substance 20 → 25 (development-substance weight)
+- External validity 15 → 20 (lessons should travel across LMICs)
+
+**Methods-referee adjustments.**
+- Identification 35 → 30 (cared about; observational work with thoughtful framing accepted)
+- Robustness 15 → 15 (unchanged)
+
+**Typical concerns.**
+- "What does this paper contribute to development studies, broadly conceived?"
+- "Is the historical / institutional context explained?"
+- "Are the limitations of the data and design honestly stated?"
+- "Does the paper engage the development-studies literature, including non-economics work where relevant?"
+
+**Referee-pool weights.**
+- POLICY: 0.25
+- CREDIBILITY: 0.20
+- THEORY: 0.15
+- MEASUREMENT: 0.15
+- SKEPTIC: 0.15
+- STRUCTURAL: 0.10
+
+**Table format override.** Standard; significance stars allowed.
+
+---
+
+### Agricultural Economics (AgEcon)
+
+**Short name:** `AgEcon`
+
+**Focus.** International Association of Agricultural Economists (IAAE) flagship. More international and comparative than AJAE; receptive to ag-econ work from any country, with appetite for cross-country / global comparisons. Publishes farm and food policy, ag-development, ag-trade, environmental ag-econ, and rural microeconomics.
+
+**Bar.** Substantive ag-econ contribution with international relevance. Methodological bar similar to AJAE for empirical work. Country-specific work clears when the lesson plausibly generalizes or when the country represents an under-studied setting.
+
+**Domain-referee adjustments.**
+- Contribution 30 → 30 (unchanged)
+- External validity 15 → 25 (international / comparative weight is high)
+- Fit 10 → 10 (unchanged)
+
+**Methods-referee adjustments.**
+- Identification 35 → 35 (unchanged)
+- Replication 5 → 10 (Wiley + IAAE replication push)
+
+**Typical concerns.**
+- "Does the paper situate the China result in a broader international context?"
+- "Are the identification assumptions plausible given the policy rollout?"
+- "Are the magnitudes interpretable in international terms (e.g., normalized to ag GDP, household income)?"
+- "Is the replication archive complete?"
+
+**Referee-pool weights.**
+- CREDIBILITY: 0.30
+- POLICY: 0.20
+- MEASUREMENT: 0.20
+- SKEPTIC: 0.15
+- STRUCTURAL: 0.10
+- THEORY: 0.05
+
+**Table format override.** Standard; significance stars allowed.
+
+---
+
 ## Field adaptation
 
 The five profiles above are econ-specific. The **pipeline is field-agnostic** — nothing in `editor.md`, `domain-referee.md`, or `methods-referee.md` hard-codes economics. What varies by field is the journal profile.
